@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>AccessAware Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <h2>Full Access Logs</h2>
+
+  <button id="deleteSelected">Delete Selected</button>
+
+  <table id="logTable">
+    <thead>
+      <tr>
+        <th><input type="checkbox" id="selectAll"></th>
+        <th>Website</th>
+        <th>Resource</th>
+        <th>Timestamp</th>
+      </tr>
+    </thead>
+    <tbody id="logList">
+      <tr><td colspan="4">Loading logs...</td></tr>
+    </tbody>
+  </table>
+
+  <script src="dashboard.js"></script>
+</body>
+
+</html>
