@@ -7,8 +7,51 @@
 </head>
 
 <body>
-  <h2>Full Access Logs</h2>
+  <h2>AccessAware Dashboard</h2>
 
+  <!-- Add Statistics Section -->
+  <div class="stats-container">
+    <div class="stat-card">
+      <h3>Total Records</h3>
+      <p id="total-records">0</p>
+    </div>
+    <div class="stat-card">
+      <h3>Camera Accesses</h3>
+      <p id="camera-accesses">0</p>
+    </div>
+    <div class="stat-card">
+      <h3>Microphone Accesses</h3>
+      <p id="mic-accesses">0</p>
+    </div>
+    <div class="stat-card">
+      <h3>Unique Domains</h3>
+      <p id="unique-domains">0</p>
+    </div>
+  </div>
+
+  <!-- Add Filtering Options -->
+  <div class="filter-controls">
+    <div class="filter-item">
+      <label for="domainFilter">Filter by Domain:</label>
+      <input type="text" id="domainFilter" placeholder="Enter domain...">
+    </div>
+    <div class="filter-item">
+      <label for="resourceFilter">Filter by Resource:</label>
+      <select id="resourceFilter">
+        <option value="all">All</option>
+        <option value="Camera">Camera</option>
+        <option value="Microphone">Microphone</option>
+      </select>
+    </div>
+    <div class="filter-item">
+      <label for="dateFilter">Filter by Date:</label>
+      <input type="date" id="dateFilter">
+    </div>
+    <button id="applyFilters">Apply Filters</button>
+    <button id="clearFilters">Clear Filters</button>
+  </div>
+
+  <h3>Access Logs</h3>
   <button id="deleteSelected">Delete Selected</button>
 
   <table id="logTable">
@@ -18,12 +61,27 @@
         <th>Website</th>
         <th>Resource</th>
         <th>Timestamp</th>
+        <th>Status</th>
       </tr>
     </thead>
     <tbody id="logList">
-      <tr><td colspan="4">Loading logs...</td></tr>
+      <tr><td colspan="5">Loading logs...</td></tr>
     </tbody>
   </table>
+
+  <!-- Add Export/Import Section -->
+  <div class="import-export-controls">
+    <h3>Backup and Restore</h3>
+    <div class="export-section">
+      <button id="exportData">Export All Data</button>
+      <p class="help-text">Save your logs and settings as a JSON file</p>
+    </div>
+    <div class="import-section">
+      <input type="file" id="importFile" accept=".json">
+      <button id="importData">Import Data</button>
+      <p class="help-text">Restore from a previously exported file</p>
+    </div>
+  </div>
 
   <script src="dashboard.js"></script>
 </body>

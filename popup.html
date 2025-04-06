@@ -5,10 +5,28 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <h3>Real-time Monitoring</h3>
+  
+  <!-- Add Active Monitoring Section -->
+  <div id="active-monitoring" class="monitoring-status">
+    <div id="camera-status" class="status-item">
+      <span class="status-label">Camera:</span>
+      <span class="status-value">Inactive</span>
+      <span class="status-indicator"></span>
+    </div>
+    <div id="microphone-status" class="status-item">
+      <span class="status-label">Microphone:</span>
+      <span class="status-value">Inactive</span>
+      <span class="status-indicator"></span>
+    </div>
+  </div>
+  
   <h3>Recent Activities</h3>
   <div id="recent-activities">No recent activity recorded yet.</div>
+  
   <button id="dashboard-btn">Dashboard</button>
   <button id="options-btn">Options</button>
-  <script src="dist/popup.bundle.js"></script>
+  
+  <script src="popup.js"></script>
 </body>
 </html>

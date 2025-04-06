@@ -8,17 +8,47 @@ script.onload = () => script.remove();
 window.addEventListener('message', (event) => {
   if (event.source !== window) return;
   if (event.data.type && event.data.type === 'AccessAware') {
-    chrome.runtime.sendMessage({
-      action: 'logAccess',
-      resource: event.data.resource
-    }, (response) => {
-      if (chrome.runtime.lastError) {
-        alert(`❌ Runtime error (content): ${chrome.runtime.lastError.message}`);
-        console.error("❌ Runtime error (content):", chrome.runtime.lastError.message);
-      } else {
-        alert(`✅ Message received explicitly: ${JSON.stringify(response)}`);
-        console.log("✅ Message received explicitly:", response);
-      }
-    });
+    
+    switch(event.data.action) {
+      case 'accessRequest':
+        // Handle initial access request (existing functionality)
+        chrome.runtime.sendMessage({
+          action: 'logAccess',
+          resource: event.data.resource
+        }, (response) => {
+          if (chrome.runtime.lastError) {
+            console.error("❌ Runtime error (content):", chrome.runtime.lastError.message);
+          } else {
+            console.log("✅ Access request logged:", response);
+          }
+        });
+        break;
+        
+      case 'streamActive':
+        // Handle active stream notification
+        chrome.runtime.sendMessage({
+          action: 'streamActive',
+          resource: event.data.resource,
+          streamId: event.data.streamId
+        });
+        break;
+        
+      case 'streamEnded':
+        // Handle stream ended notification
+        chrome.runtime.sendMessage({
+          action: 'streamEnded',
+          resource: event.data.resource,
+          streamId: event.data.streamId
+        });
+        break;
+
+      case 'pageClosing':
+        // Handle page unload with active streams
+        chrome.runtime.sendMessage({
+          action: 'pageClosing',
+          activeStreams: event.data.activeStreams
+        });
+        break;
+    }
   }
 });
