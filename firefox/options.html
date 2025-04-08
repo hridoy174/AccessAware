@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>AccessAware Options</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h2>AccessAware Options</h2>
+    
+    <div class="options-section">
+        <h3>Notification Settings</h3>
+        <label><input type="checkbox" id="enableNotifications"> Enable Notifications</label>
+        <button id="saveOptions">Save</button>
+    </div>
+
+    <!-- Add Site Permissions Section -->
+    <div class="site-permissions">
+        <h3>Trusted Sites</h3>
+        <p class="help-text">Access from these sites will be logged but won't trigger notifications</p>
+        <div class="site-input">
+            <input type="text" id="trusted-site-input" placeholder="Enter domain (e.g., meet.google.com)">
+            <button id="add-trusted-site">Add</button>
+        </div>
+        <ul id="trusted-sites-list"></ul>
+        
+        <h3>Blocked Sites</h3>
+        <p class="help-text">These sites will be prevented from accessing your camera and microphone</p>
+        <div class="site-input">
+            <input type="text" id="blocked-site-input" placeholder="Enter domain (e.g., suspicious-site.com)">
+            <button id="add-blocked-site">Add</button>
+        </div>
+        <ul id="blocked-sites-list"></ul>
+    </div>
+    
+    <script src="options.js"></script>
+</body>
+</html>
